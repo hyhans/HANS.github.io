@@ -1,0 +1,303 @@
+/* General Reset and Body Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 0%, #08122c 0%, #040814 50%, #000000 100%);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sky Container */
+.sky-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------------- MOON ---------------- */
+.moon {
+    position: absolute;
+    top: 10%;
+    right: 12%;
+    width: 120px;
+    height: 120px;
+    background-color: #fdfdfd; /* Off-white base */
+    border-radius: 50%;
+    /* Multi-layered cinematic bloom/glow */
+    box-shadow: 
+        0 0 20px 5px rgba(255, 255, 255, 0.9),
+        0 0 50px 15px rgba(200, 230, 255, 0.6),
+        0 0 100px 40px rgba(138, 143, 226, 0.4),
+        0 0 200px 80px rgba(100, 80, 200, 0.2);
+    z-index: 2;
+}
+
+/* ---------------- STARS ---------------- */
+.stars-small, .stars-medium, .stars-large {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    z-index: 1;
+}
+
+.stars-small {
+    width: 1px;
+    height: 1px;
+    box-shadow: 
+        10vw 10vh #fff, 20vw 25vh #fff, 30vw 5vh #fff, 40vw 40vh #fff, 50vw 15vh #fff, 
+        60vw 60vh #fff, 70vw 20vh #fff, 80vw 80vh #fff, 90vw 10vh #fff, 15vw 70vh #fff, 
+        25vw 90vh #fff, 35vw 50vh #fff, 45vw 85vh #fff, 55vw 35vh #fff, 65vw 75vh #fff, 
+        75vw 45vh #fff, 85vw 95vh #fff, 95vw 55vh #fff, 5vw 30vh #fff, 8vw 85vh #fff, 
+        18vw 12vh #fff, 28vw 62vh #fff, 38vw 28vh #fff, 48vw 72vh #fff, 58vw 8vh #fff, 
+        68vw 58vh #fff, 78vw 18vh #fff, 88vw 68vh #fff, 98vw 32vh #fff, 12vw 40vh #fff,
+        32vw 88vh #fff, 52vw 45vh #fff, 72vw 12vh #fff, 92vw 65vh #fff;
+    animation: twinkle-small 4s infinite alternate ease-in-out;
+}
+
+.stars-medium {
+    width: 2px;
+    height: 2px;
+    box-shadow: 
+        12vw 15vh #fff, 22vw 35vh #fff, 32vw 75vh #fff, 42vw 20vh #fff, 52vw 65vh #fff, 
+        62vw 10vh #fff, 72vw 85vh #fff, 82vw 40vh #fff, 92vw 90vh #fff, 10vw 50vh #fff, 
+        30vw 80vh #fff, 50vw 95vh #fff, 70vw 30vh #fff, 90vw 60vh #fff, 18vw 45vh #fff, 
+        28vw 85vh #fff, 38vw 15vh #fff, 48vw 55vh #fff, 58vw 25vh #fff, 68vw 95vh #fff;
+    animation: twinkle-medium 6s infinite alternate ease-in-out;
+    border-radius: 50%;
+}
+
+.stars-large {
+    width: 3px;
+    height: 3px;
+    box-shadow: 
+        15vw 25vh #fff, 35vw 65vh #fff, 55vw 15vh #fff, 75vw 55vh #fff, 95vw 85vh #fff, 
+        25vw 10vh #fff, 45vw 40vh #fff, 65vw 90vh #fff, 85vw 20vh #fff, 5vw 75vh #fff;
+    animation: twinkle-large 8s infinite alternate ease-in-out;
+    border-radius: 50%;
+}
+
+@keyframes twinkle-small {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes twinkle-medium {
+    0% { opacity: 0.1; transform: scale(0.5); }
+    100% { opacity: 0.9; transform: scale(1.1); }
+}
+
+@keyframes twinkle-large {
+    0% { opacity: 0.3; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1.3); }
+}
+
+/* ---------------- CLOUD MIST ---------------- */
+.cloud-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.cloud-mist {
+    position: absolute;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 60%);
+    filter: blur(80px);
+    border-radius: 50%;
+}
+
+.mist-1 {
+    top: 30%;
+    left: -40%;
+    width: 150%;
+    height: 40%;
+    opacity: 0.08;
+    animation: drift-right 80s linear infinite;
+}
+
+.mist-2 {
+    top: 60%;
+    left: -20%;
+    width: 200%;
+    height: 60%;
+    opacity: 0.06;
+    animation: drift-left 120s linear infinite;
+}
+
+.mist-3 {
+    top: 10%;
+    left: -60%;
+    width: 180%;
+    height: 50%;
+    opacity: 0.05;
+    animation: drift-right 100s linear infinite;
+}
+
+@keyframes drift-right {
+    0% { transform: translateX(-10%); }
+    100% { transform: translateX(30%); }
+}
+
+@keyframes drift-left {
+    0% { transform: translateX(10%); }
+    100% { transform: translateX(-30%); }
+}
+
+/* ---------------- CENTER CONTENT ---------------- */
+.center-content {
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-text {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 0.8rem;
+    margin: 0;
+    /* RGB Gradient */
+    background: linear-gradient(
+        90deg, 
+        #ff0000, #ff7f00, #ffff00, #00ff00, 
+        #0000ff, #4b0082, #9400d3, #ff0000
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* Default fast animation */
+    animation: rgb-flow 1.5s linear infinite;
+    cursor: pointer;
+    user-select: none;
+    
+    /* Smooth transition */
+    transition: all 0.5s ease-in-out;
+    transform: scale(1);
+    /* Glowing effect */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+#main-text:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.3));
+}
+
+#main-text.slow-rgb {
+    /* Very slow animation */
+    animation-duration: 10s;
+    font-size: 5rem;
+}
+
+@keyframes rgb-flow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+#hidden-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.3rem;
+    color: rgba(240, 240, 245, 0.85); /* Soft white */
+    margin-top: 15px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.8s ease-in-out;
+    user-select: none;
+    text-transform: lowercase;
+}
+
+#hidden-text.show {
+    opacity: 1; /* Shown */
+}
+
+/* ---------------- BOTTOM CONTENT ---------------- */
+.bottom-content {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.bottom-content p {
+    font-family: sans-serif;
+    font-size: 0.85rem;
+    color: #4a4a5a; /* Dim grey */
+    letter-spacing: 0.15rem;
+    margin: 0;
+    text-transform: lowercase;
+    user-select: none;
+}
+
+/* ---------------- MEDIA QUERIES ---------------- */
+
+/* Tablet (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .moon {
+        width: 90px;
+        height: 90px;
+        top: 8%;
+        right: 8%;
+    }
+    
+    #main-text {
+        font-size: 2.5rem;
+        letter-spacing: 0.6rem;
+    }
+
+    #main-text.slow-rgb {
+        font-size: 4rem;
+    }
+
+    #hidden-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .moon {
+        width: 60px;
+        height: 60px;
+        top: 5%;
+        right: 5%;
+        /* Adjust moon bloom to be smaller so it doesn't overwhelm the small screen */
+        box-shadow: 
+            0 0 10px 2px rgba(255, 255, 255, 0.9),
+            0 0 25px 8px rgba(200, 230, 255, 0.6),
+            0 0 50px 20px rgba(138, 143, 226, 0.4),
+            0 0 100px 40px rgba(100, 80, 200, 0.2);
+    }
+    
+    #main-text {
+        font-size: 1.8rem;
+        letter-spacing: 0.4rem;
+    }
+
+    #main-text.slow-rgb {
+        font-size: 2.8rem;
+    }
+
+    #hidden-text {
+        font-size: 1rem;
+        letter-spacing: 0.15rem;
+    }
+    
+    .bottom-content {
+        bottom: 20px;
+    }
+
+    .bottom-content p {
+        font-size: 0.7rem;
+    }
+}
